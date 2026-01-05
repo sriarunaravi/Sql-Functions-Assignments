@@ -1,0 +1,12 @@
+use shipping;
+delimiter $$
+Create Function GetMinPrice()
+returns float
+deterministic 
+begin
+declare Min_price float;
+ Select min(Price) INTO Min_price FROM Shipping_Table;
+return Min_price;
+end $$
+delimiter $$ ;
+Select GetMinPrice() AS Min_Product_Price;
